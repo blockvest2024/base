@@ -1,0 +1,141 @@
+
+/*----------------------------------------*/
+/*  BLOG CSS START
+/*----------------------------------------*/
+
+@use '../utils' as *;
+
+.blog {
+	&__intro {
+		&-innner{
+			@include flexbox();
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 70px 50px;
+		}
+	}
+	&__item {
+		padding: 40px 40px 40px;
+		background: var(--clr-bg-gray-1);
+		@media #{$xl,$lg,$md,$xxs}{
+			padding: 40px 25px 40px;
+		}
+		&:hover {
+			img {
+				transform: scale(1.05);
+			}
+			a {
+				&:after {
+					animation: shine 800ms;
+				}
+			}
+		}
+	}
+
+	&__thumb {
+		overflow: hidden;
+		margin-bottom: 30px;
+		a {
+			position: relative;
+			height: 100%;
+			display: block;
+			&:after {
+				position: absolute;
+				content: "";
+				top: 0;
+				left: -75%;
+				z-index: 2;
+				display: block;
+				width: 50%;
+				height: 100%;
+				background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 100%);
+				transform: skewX(-25deg);
+			 }
+		}
+	}
+	&__content {
+		h3 {
+			a {
+				font-size: 24px;
+				color: var(--clr-text-20);
+				font-weight: var(--bd-fw-sbold);
+				margin-bottom: 35px;
+				display: inline-block;
+				text-transform: capitalize;
+				@media #{$xxs,$md,$lg,$xl}{
+					font-size: 20px;
+				}
+				&:hover {
+					color: var(--clr-theme-1);
+				}
+			}
+		}
+	}
+	&__meta {
+		@include flexbox();
+		gap: 25px 35px;
+		row-gap: 25px;
+		column-gap: 35px;
+		margin-bottom: 35px;
+		flex-wrap: wrap;
+		span {
+			@include flexbox();
+			gap: 10px;
+			align-items: center;
+			color: var(--clr-text-5);
+			font-size: 14px;
+			a {
+				&:hover {
+					color: var(--clr-theme-1);
+				}
+			}
+			i {
+				font-size: 18px;
+				line-height: 1;
+			}
+		}
+	}
+	&__btn {
+		height: 25px;
+		@include inline-flex();
+		align-items: center;
+		justify-content: center;
+		background-image: var(--clr-gradient-14);
+		padding: 0px 11px;
+		text-transform: capitalize;
+		color: var(--clr-common-white);
+		border-radius: 2px;
+		font-size: 14px;
+		background-position: 0 100%;
+		background-size: 300% 100%;
+		&:hover {
+			color: var(--clr-common-white);
+			background-position: 100% 100%;
+		}
+	}
+}
+.trailer {
+	&__wrapper {
+		position: relative;
+	}
+	&__thumb {
+		min-height: 574px;
+		&:before {
+			position: absolute;
+			content: "";
+			height: 100%;
+			width: 100%;
+			background: var(--clr-common-black);
+			opacity: 0.5;
+			top: 0;
+			inset-inline-start: 0;
+		}
+	}
+	&__play-btn {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}

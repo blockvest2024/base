@@ -1,0 +1,115 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  BREAADCRUMB CSS START
+/*----------------------------------------*/
+
+// Breadcrumb style
+.breadcrumb {
+	&__main {
+		@include flexbox();
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 25px;
+	}
+	&__wrapper {
+		padding: 35px 0 15px;
+		border-bottom: 1px solid var(--clr-border-1);
+	}
+	&__menu {
+		ul {
+			@include inline-flex();
+			gap: 30px;
+			justify-content: center;
+			li {
+				list-style: none;
+				position: relative;
+				line-height: 1;
+				&:not(:last-child) {
+					&:after {
+						display: inline-block;
+						content: "/";
+						position: absolute;
+						inset-inline-end: -18px;
+						top: 50%;
+						font-family: var(--bd-ff-fontawesome);
+						font-size: 14px;
+						transform: translateY(-50%) rotateY(40deg);
+						color: var(--clr-text-secondary);
+					}
+				}
+				&.active {
+					span {
+						color: var(--clr-theme-1);
+						@include dark {
+							color: var(--clr-common-white);
+						}
+					}
+				}
+				span {
+					font-size: 16px;
+					text-transform: capitalize;
+					font-weight: var(--bd-fw-medium);
+					color: var(--clr-text-secondary);
+					a {
+						font-weight: var(--bd-fw-regular);
+						&:hover {
+							color: var(--clr-theme-1);
+						}
+					}
+				}
+			  }
+		}
+	}
+	&__inner {
+		@include flexbox();
+		align-items: center;
+		gap: 10px;
+	}
+	&__icon {
+		i {
+			color: var(--clr-text-8);
+		}
+	}
+}
+
+// Breadcrumb tab 
+.breadcrumb__tab {
+    .nav-link {
+        font-size: 14px;
+        padding: 6px 16px;
+    }
+    .nav-tabs {
+        @include flexbox();
+        gap: 10px;
+        border: 0;
+        .nav-link {
+			border: 1px solid var(--clr-border-1);
+			color: var(--clr-text-20);
+			font-weight: var(--bd-fw-medium);
+			text-transform: capitalize;
+			@include border-radius(6px);
+			@include dark {
+				color: var(--clr-common-white);
+			}
+            &.active {
+                color: var(--clr-common-white);
+                position: relative;
+                z-index: 5;
+                border: transparent;
+            &::after {
+                position: absolute;
+                content: "";
+                height: 100%;
+                width: 100%;
+                top: 0;
+                inset-inline-start: 0;
+                background: var(--clr-gradient-7);
+                z-index: -1;
+                @include border-radius(6px);
+            }
+            }
+        }
+    }
+}
